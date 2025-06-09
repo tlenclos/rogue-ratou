@@ -130,9 +130,12 @@ export class DeathModal {
 
     // Button click handler
     this.nextLifeButton.on("pointerup", () => {
-      this.hide();
-      if (this.onNextLifeCallback) {
-        this.onNextLifeCallback();
+      if (this.isVisible) {
+        this.hide();
+
+        if (this.onNextLifeCallback) {
+          this.onNextLifeCallback();
+        }
       }
     });
 
