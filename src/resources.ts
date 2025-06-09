@@ -1,4 +1,4 @@
-import { ImageSource, DefaultLoader, Gif } from "excalibur";
+import { DefaultLoader, Gif } from "excalibur";
 
 // It is convenient to put your resources in one place
 export const Resources = {

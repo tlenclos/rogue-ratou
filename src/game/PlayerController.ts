@@ -1,4 +1,4 @@
-import { Actor, Engine, Keys, vec } from "excalibur";
+import { Actor, Engine, Keys } from "excalibur";
 
 export enum PlayerAbility {
   NONE = "none",

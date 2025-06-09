@@ -1,13 +1,4 @@
-import {
-  Actor,
-  Color,
-  vec,
-  Font,
-  Text,
-  FontUnit,
-  Engine,
-  Scene,
-} from "excalibur";
+import { Actor, Color, Font, FontUnit, Scene, Text, vec } from "excalibur";
 
 export class DeathModal {
   private modalElements: Actor[] = [];
