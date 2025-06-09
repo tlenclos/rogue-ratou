@@ -1,0 +1,25 @@
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Courier New", monospace;
+  color: #ffffff;
+}
+
+canvas {
+  border: 2px solid #333;
+  border-radius: 8px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}

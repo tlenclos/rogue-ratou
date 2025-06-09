@@ -1,0 +1,105 @@
+# Cursor Rules for a Roguelike Platformer Game (TypeScript + Excalibur.js)
+
+## 1. Project Structure (Excalibur.js)
+- Keep `main.ts` minimal - only engine configuration and startup
+- Organize scenes in separate files (e.g., `level.ts`, `menu.ts`, `game-over.ts`)
+- Place actors/entities in an `actors/` directory
+- Keep resources (images, sounds) loading in `resources.ts`
+- Use `utils/` for game-specific utilities and helpers
+
+## 2. TypeScript Conventions
+- Always use explicit types for function parameters and return values
+- Prefer `interface` for object shapes, and `type` for unions/intersections
+- Enable `strict` mode in `tsconfig.json`
+- Use Excalibur's built-in types (Actor, Scene, Engine, etc.)
+
+## 3. Excalibur Engine & Scenes
+- Configure the engine once in `main.ts` with appropriate settings
+- Use `pixelArt: true` for pixel-perfect rendering
+- Each game state should be a separate Scene class
+- Use scene transitions (FadeInOut, etc.) for smooth state changes
+- Prefer `DisplayMode.FitScreenAndFill` for responsive design
+
+## 4. Actors & Components (Excalibur ECS)
+- Extend `Actor` class for game entities (Player, Enemy, Item)
+- Use Excalibur's component system for modular behavior
+- Each actor should have a clear responsibility and type
+- Use actor tags for grouping and collision filtering
+
+## 5. Input Handling (Excalibur)
+- Use `engine.input.keyboard` and `engine.input.pointers` for input
+- Handle input in actor `onPreUpdate` methods or scene-level handlers
+- Create input mappings/constants for key bindings
+- Support both keyboard and gamepad input where possible
+
+## 6. Physics & Collision (Excalibur)
+- Use Excalibur's built-in physics system and CollisionType
+- Leverage `onPreCollisionResolve` and `onPostCollisionResolve` events
+- Use appropriate collision groups for different entity types
+- Consider using realistic physics solver for platformer mechanics
+
+## 7. Graphics & Rendering (Excalibur)
+- Use `ImageSource` and `SpriteSheet` for image assets
+- Organize sprites and animations using Excalibur's animation system
+- Use `Graphics` API for procedural shapes and effects
+- Prefer sprite batching for performance with many similar objects
+
+## 8. Audio (Excalibur)
+- Use `Sound` class for audio effects and music
+- Preload all audio in `resources.ts` with the loader
+- Use audio groups for volume control (SFX, Music, etc.)
+- Consider positional audio for immersive gameplay
+
+## 9. Procedural Generation
+- Place generation logic in separate modules/classes
+- Use Excalibur's `Random` class with seeds for reproducible results
+- Generate levels as Scene instances or actor collections
+- Cache generated content when appropriate for performance
+
+## 10. Resources & Loading (Excalibur)
+- Define all resources in `resources.ts`
+- Use the `Loader` for preloading assets before game start
+- Create resource constants/enums to avoid magic strings
+- Handle loading progress and errors gracefully
+
+## 11. Game State Management
+- Use Scene data or a global state object for persistent data
+- Implement save/load functionality using localStorage or IndexedDB
+- Track player progress, inventory, and game statistics
+- Use event emitters for loose coupling between systems
+
+## 12. Performance (Excalibur)
+- Use `onScreenElements` and culling for large levels
+- Leverage object pooling for frequently created/destroyed actors
+- Profile using Excalibur's debug tools and browser DevTools
+- Use fixed timestep for consistent physics simulation
+
+## 13. Testing
+- Write unit tests for game logic separate from Excalibur dependencies
+- Use Playwright for integration testing as configured in the scaffold
+- Mock Excalibur classes and engine for isolated testing
+- Test procedural generation algorithms with known seeds
+
+## 14. Development Workflow
+- Use `npm run dev` for development with hot reload
+- Use `npm run build` before testing production builds
+- Leverage Excalibur's debug mode and development tools
+- Use browser DevTools for performance profiling
+
+## 15. Code Organization Best Practices
+- One actor class per file, named clearly (Player.ts, Goblin.ts)
+- Group related functionality (all enemies in `actors/enemies/`)
+- Use barrel exports (index.ts) for clean imports
+- Keep scene files focused on scene-specific logic only
+
+## 16. Excalibur-Specific Patterns
+- Use `onInitialize` for actor setup, `onPreUpdate` for logic
+- Leverage Excalibur's event system for decoupled communication
+- Use timers and actions for time-based behaviors
+- Prefer Excalibur's math utilities (Vector, BoundingBox) over custom implementations 
+
+## 17. Gameplay Mechanics
+- The player can't do anything at first
+- Each level he dies but unlock a new skill
+- First level, player can't move, a rock is falling from the top and he dies
+- Second level, player can move and can avoid the rock
